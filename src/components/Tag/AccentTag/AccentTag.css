@@ -1,0 +1,9 @@
+.AccessTag {
+	border: 2px solid var(--color-accent);
+	background: var(--color-background);
+}
+
+.AccentTag--active {
+	background: var(--color-accent);
+	color: var(--color-text-inverse);
+}
