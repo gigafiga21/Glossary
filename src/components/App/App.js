@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import AccentCard from "../Card/AccentCard/AccentCard";
 import HeaderItem from "../Header/HeaderItem/HeaderItem";
 import Header from "../Header/Header";
 import GlossaryList from "../GlossaryList/GlossaryList";
@@ -10,11 +11,11 @@ import "./App.css";
 
 const APP_PAGES = {
     [APP_PAGE_ID_LIST]: {
-        switcher: <AppPageSwitchTag page={APP_PAGE_ID_LIST}>Список</AppPageSwitchTag>,
+        switcher: <AppPageSwitchTag pageId={APP_PAGE_ID_LIST}>Список</AppPageSwitchTag>,
         contentComponent: GlossaryList,
     },
     [APP_PAGE_ID_HIERARCHY]: {
-        switcher: <AppPageSwitchTag page={APP_PAGE_ID_HIERARCHY}>Иерархия</AppPageSwitchTag>,
+        switcher: <AppPageSwitchTag pageId={APP_PAGE_ID_HIERARCHY}>Иерархия</AppPageSwitchTag>,
         contentComponent: GlossaryHierarchy,
     }
 };
@@ -29,15 +30,17 @@ export default function App() {
     const CurrentAppPageContent = APP_PAGES[currentAppPageId].contentComponent;
 
     return (
-        <div className="App">
-            <AppPageContext.Provider value={{ currentAppPageId, changeCurrentAppPageId: setCurrentAppPageId }}>
-                <Header className="AppHeader">
-                    {APP_PAGES_ITERABLE.map((appPageDesc) => (<HeaderItem>{appPageDesc.switcher}</HeaderItem>))}
-                </Header>
-            </AppPageContext.Provider>
-            <div className="AppContent">
-                <CurrentAppPageContent />
+	<AppPageContext.Provider value={{ currentAppPageId, changeAppPageId: setCurrentAppPageId }}>
+            <div className="App">
+	    	<AccentCard>
+                    <Header>
+                        {APP_PAGES_ITERABLE.map((appPageDesc) => (<HeaderItem>{appPageDesc.switcher}</HeaderItem>))}
+                    </Header>
+	    	</AccentCard>
+                <div className="AppContent">
+                    <CurrentAppPageContent />
+                </div>
             </div>
-        </div>
+	</AppPageContext.Provider>
     );
 }
