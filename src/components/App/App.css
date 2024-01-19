@@ -1,5 +1,11 @@
 .App {
     display: flex;
+    align-items: flex-start;
+    gap: 8px;
     margin: 8px;
+}
+
+.AppContent {
+    flex-grow: 1;
 }
 

@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AccentCard from "../Card/AccentCard/AccentCard";
 import HeaderItem from "../Header/HeaderItem/HeaderItem";
 import Header from "../Header/Header";
+import { GLOSSARY_DATA_TYPE_PLAIN } from "./glossaryDataTypes";
+import loadGlossaryData from "./loadGlossaryData";
 import GlossaryList from "../GlossaryList/GlossaryList";
 import GlossaryHierarchy from "../GlossaryHierarchy/GlossaryHierarchy";
 import { APP_PAGE_ID_HIERARCHY, APP_PAGE_ID_LIST, DEFAULT_APP_PAGE_ID } from "./appPageIds";
@@ -29,6 +31,14 @@ export default function App() {
     const [currentAppPageId, setCurrentAppPageId] = useState(DEFAULT_APP_PAGE_ID);
     const CurrentAppPageContent = APP_PAGES[currentAppPageId].contentComponent;
 
+    const [glossaryData, setGlossaryData] = useState({});
+    const appPageGlossaryData = glossaryData[currentAppPageId];
+    useEffect(() => {
+	loadGlossaryData(GLOSSARY_DATA_TYPE_PLAIN, "temp")
+	.then((d) => setGlossaryData({ ...glossaryData, [APP_PAGE_ID_LIST]: d }));
+    }, []);
+
+    console.log(glossaryData, currentAppPageId);
     return (
 	<AppPageContext.Provider value={{ currentAppPageId, changeAppPageId: setCurrentAppPageId }}>
             <div className="App">
@@ -38,9 +48,10 @@ export default function App() {
                     </Header>
 	    	</AccentCard>
                 <div className="AppContent">
-                    <CurrentAppPageContent />
+	    	    {appPageGlossaryData ? <CurrentAppPageContent data={appPageGlossaryData} /> : null}
                 </div>
             </div>
 	</AppPageContext.Provider>
     );
 }
+

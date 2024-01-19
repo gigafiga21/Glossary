@@ -4,7 +4,6 @@ import AppPageContext from "../AppPageContext/AppPageContext";
 
 export default function AppPageSwitchTag({ pageId, children }) {
 	const { currentAppPageId, changeAppPageId } = useContext(AppPageContext);
-	console.log(currentAppPageId, pageId, changeAppPageId);
 
 	return (
 		<AccentTag
