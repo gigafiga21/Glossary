@@ -1,12 +1,11 @@
 .AccentTag {
-	border: 2px solid rgba(0, 0, 0, 0);
-	border-bottom-color: var(--color-accent);
-	background: var(--color-background);
+  border: 2px solid rgba(0, 0, 0, 0);
+  border-bottom-color: var(--color-accent);
+  background: var(--color-background);
 }
 
 .AccentTag--active {
-	border-color: var(--color-accent);
-	background: var(--color-accent);
-	color: var(--color-text-inverse);
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
 }
-

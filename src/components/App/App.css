@@ -1,11 +1,26 @@
 .App {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    margin: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 8px;
+}
+
+.AppMenu {
+  z-index: 1;
 }
 
 .AppContent {
-    flex-grow: 1;
+  flex-grow: 1;
+  height: 100%;
 }
 
+.AppContent--full {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}

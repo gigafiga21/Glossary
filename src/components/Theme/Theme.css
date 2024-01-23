@@ -1,7 +1,9 @@
 .Theme--contrast {
-	--color-background: #fff;
-	--color-accent: #000;
+  --color-background: #fff;
+  --color-accent: #000;
 
-	--color-text: #000;
-	--color-text-inverse: #fff;
+  --color-text: #000;
+  --color-text-inverse: #fff;
+
+  height: 100%;
 }

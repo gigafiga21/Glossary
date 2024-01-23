@@ -6,15 +6,14 @@ import AccentCard from "../Card/AccentCard/AccentCard";
 import "./GlossaryList.css";
 
 export default function GlossaryList({ data }) {
-    return (
-        <div className="GlossaryList">
-	    {data.map((glossaryItem) => (
-                <AccentCard>
-		    <TypographyHeader>{glossaryItem.therm}</TypographyHeader>
-		<div>{glossaryItem.definition}</div>
-		</AccentCard>
-	    ))}
-	</div>
-    );
+  return (
+    <div className="GlossaryList">
+      {data.map((glossaryItem) => (
+        <AccentCard>
+          <TypographyHeader>{glossaryItem.therm}</TypographyHeader>
+          <div>{glossaryItem.definition}</div>
+        </AccentCard>
+      ))}
+    </div>
+  );
 }
-
