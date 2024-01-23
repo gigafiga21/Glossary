@@ -73,22 +73,24 @@ export default function App() {
       value={{ currentAppPageId, changeAppPageId: setCurrentAppPageId }}
     >
       <div className="App">
-        <AccentCard className="AppMenu">
-          <Header>
-            {APP_PAGES_ITERABLE.map((appPageDesc) => (
-              <HeaderItem>{appPageDesc.switcher}</HeaderItem>
-            ))}
-          </Header>
-        </AccentCard>
-        <div
-          className={classNames(
-            "AppContent",
-            `AppContent--${APP_PAGES[currentAppPageId].contentMode}`,
-          )}
-        >
-          {currentAppPageData ? (
-            <CurrentAppPageContent data={currentAppPageData} />
-          ) : null}
+        <div className="AppContainer">
+          <AccentCard className="AppMenu">
+            <Header>
+              {APP_PAGES_ITERABLE.map((appPageDesc) => (
+                <HeaderItem>{appPageDesc.switcher}</HeaderItem>
+              ))}
+            </Header>
+          </AccentCard>
+          <div
+            className={classNames(
+              "AppContent",
+              `AppContent--${APP_PAGES[currentAppPageId].contentMode}`,
+            )}
+          >
+            {currentAppPageData ? (
+              <CurrentAppPageContent data={currentAppPageData} />
+            ) : null}
+          </div>
         </div>
       </div>
     </AppPageContext.Provider>
